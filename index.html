@@ -7,14 +7,16 @@
 	<style type="text/css">
 		.prop {
 			position: absolute;
-			height: 100px;
-			width: 100px;
-
+			height: 200px;
+			width: 200px;
+			background-image: url(2.png);
+			background-size: 100% 100%;
 		}
 		.krot{
 			position: absolute;
-			height: 100px;
-			width: 50px;
+			height: 200px;
+			width: 150px;
+			background-size: 100% 100%;
 		}
 	</style>
 </head>
@@ -22,18 +24,12 @@
 <h3 style="margin-left: 900px">Времени осталось: <span class="timer">10</span></h3>
 <h4 style="margin-left: 20px">Score: <span class="score">0</span></h4>
 <!-- дивы норы чтобы появится -->
-<div class="bg-warning prop nora" style="top: 100px; left: 500px"></div>
-<div class="bg-warning prop nora" style="top: 100px; left: 700px"></div>
-<div class="bg-warning prop nora" style="top: 100px; left: 900px"></div>
-<div class="bg-warning prop nora" style="top: 300px; left: 500px"></div>
-<div class="bg-warning prop nora" style="top: 300px; left: 700px"></div>
-<div class="bg-warning prop nora" style="top: 300px; left: 900px"></div>
-
-
-
-
-
-
+<div class="prop nora" style="top: 200px; left: 500px"></div>
+<div class="prop nora" style="top: 200px; left: 900px"></div>
+<div class="prop nora" style="top: 200px; left: 1300px"></div>
+<div class="prop nora" style="top: 600px; left: 500px"></div>
+<div class="prop nora" style="top: 600px; left: 900px"></div>
+<div class="prop nora" style="top: 600px; left: 1300px"></div>
 <script type="text/javascript">
 let nora = document.querySelector(".nora")
 points = document.querySelector(".score")
@@ -46,8 +42,8 @@ let randomizer = function(arg) {
         let round = Math.round(random);
         return round
     }
-let leftPosition = [500, 700, 900];
-let topPosition = [300, 100];
+let leftPosition = [525, 1325, 925];
+let topPosition = [600, 200];
 let names = ["good", "bad"];
 
 let createBox = function (){
@@ -60,37 +56,37 @@ box.style.transition = "1s"
 box.style.left = leftPosition[randomizer(2)] + "px";
 box.name = names[randomizer(1)]
 if(box.name == "good"){
-		box.style.background = "green"	
+		box.style.backgroundImage = 'url(1.png)'
 	}
 	else{
-		box.style.background = "red"	
+		box.style.backgroundImage = 'url(1.jpg)'
 	}
 	let showbox = function(){
-		if(box.style.top == "100px"){
+		if(box.style.top == "200px"){
 			box.style.top = "50px"
 		}
 		else{
-			box.style.top = "250px"
+			box.style.top = "450px"
 		}
 	}
-	setTimeout(showbox, 500);
+	setTimeout(showbox, 750);
 
 	let hidebox = function(){
 		if(box.style.top == "50px"){
-			box.style.top = "100px"
+			box.style.top = "200px"
 		}
 		else{
-			box.style.top = "300px"
+			box.style.top = "600px"
 		}
 	}
-	setTimeout(hidebox, 1000);
+	setTimeout(hidebox, 1500);
 
 	box.onclick = function(){
 			box.style.display = "none"
 			if(box.name == "good"){
 				score = score + 1;
 				points.innerHTML = score
-				if(score == 7){
+				if(score == 5){
 					winner = 1
 					alert('you win')
 					document.body.style.display = 'none'
@@ -102,7 +98,7 @@ if(box.name == "good"){
 			}
 		}
 }
-let interBox = setInterval(createBox, 500)
+let interBox = setInterval(createBox, 750)
 let secs = 10;
     let timer = setInterval(tick,1000)
     function tick(){
