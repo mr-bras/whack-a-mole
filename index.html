@@ -18,18 +18,28 @@
 			width: 150px;
 			background-size: 100% 100%;
 		}
+		button{
+			height: 50px;
+			width: 100px;
+			color: white;
+		
+		}
+		button:nth-child(1){
+			cursor: url("rocket.png"),auto;
+		}
 	</style>
 </head>
-<body>
-<h3 style="margin-left: 900px">Времени осталось: <span class="timer">10</span></h3>
-<h4 style="margin-left: 20px">Score: <span class="score">0</span></h4>
+<body style="background-image: url(3.png); background-size: cover;">
+<h3 class="text-light" style="margin-left: 900px ">Времени осталось: <span class="timer text-light">10</span></h3>
+<h4 class="text-light" style="margin-left: 20px">Score: <span class="score">0</span></h4>
+<button >light</button>
 <!-- дивы норы чтобы появится -->
-<div class="prop nora" style="top: 200px; left: 500px"></div>
-<div class="prop nora" style="top: 200px; left: 900px"></div>
-<div class="prop nora" style="top: 200px; left: 1300px"></div>
-<div class="prop nora" style="top: 600px; left: 500px"></div>
-<div class="prop nora" style="top: 600px; left: 900px"></div>
-<div class="prop nora" style="top: 600px; left: 1300px"></div>
+<div class="prop nora border border-warning border-4" style="top: 200px; left: 500px"></div>
+<div class="prop nora border border-warning border-4" style="top: 200px; left: 900px"></div>
+<div class="prop nora border border-warning border-4" style="top: 200px; left: 1300px"></div>
+<div class="prop nora border border-warning border-4" style="top: 600px; left: 500px"></div>
+<div class="prop nora border border-warning border-4" style="top: 600px; left: 900px"></div>
+<div class="prop nora border border-warning border-4" style="top: 600px; left: 1300px"></div>
 <script type="text/javascript">
 let nora = document.querySelector(".nora")
 points = document.querySelector(".score")
@@ -51,15 +61,19 @@ let box = document.createElement("div");
 document.body.appendChild(box);
 nora.before(box)
 box.classList.add("krot");
+box.classList.add("border");
+box.classList.add("border-3");
 box.style.top = topPosition[randomizer(1)] + "px";
 box.style.transition = "1s"
 box.style.left = leftPosition[randomizer(2)] + "px";
 box.name = names[randomizer(1)]
 if(box.name == "good"){
 		box.style.backgroundImage = 'url(1.png)'
+		box.classList.add("border-success");
 	}
 	else{
 		box.style.backgroundImage = 'url(1.jpg)'
+		box.classList.add("border-danger");
 	}
 	let showbox = function(){
 		if(box.style.top == "200px"){
